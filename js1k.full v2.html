@@ -1,0 +1,1074 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script>
+    // GA
+  </script>
+</head>
+<body id="b">
+<script>
+  // http://corewar.co.uk/standards/icws88.txt
+
+  f(b);
+
+  function f(b) {
+    b.innerHTML = `
+<style>
+  * { color: white; background-color: black; }
+</style>
+
+<style>*{font:12px/15px monospace}pre,textarea{height:850px;float:left;width:500px}pre,span{font:8px/10px monospace}</style>
+<button id=I>Init</button>
+<button id=S>Step</button>
+<button id=R>Run</button>
+<button id=F>1s</button>
+<button id=T>Turbo</button>
+<button id=D>js1k</button>
+<button id=K>Stop</button>
+<input style="width:100%; border:1px solid red" id=debugA>
+<input style="width:100%; border:1px solid blue" id=debugB>
+<pre id=C></pre>
+
+<textarea id=warriorA>
+
+
+
+; http://para.inria.fr/~doligez/corewar/rc/Powerbomb[1].txt
+entryway  JMP  @0
+FOO EQU 10
+counter    DAT  20
+databomb  DAT  0
+scan    ADD  #108,outptr    ; assumes corsize multiple of 4
+start    JMZ  scan,@outptr    ; scan till enemy found
+    ADD  #10,outptr
+NOOP    JMP  1      ; noops are placed to avoid
+            ; sighting self
+    MOV  #1,entryway    ; place jump into trap 10
+    SUB  outptr,entryway    ; spots ahead of enemy
+    MOV  entryway,@outptr  ; position
+    JMP  1
+    MOV  #20,counter    ; create path of 20 NOOPs
+noopbomb  MOV  NOOP,<outptr    ; which lead to jump into trap
+    DJN  noopbomb,counter
+    JMP  1
+    ADD  #10,outptr    ; restart scan where left off
+    JMP  scan
+bombptr    DAT  entryway    ; pointer for trapped enemies
+outptr    DAT  0
+trap    SPL  0      ; occupy all lines of execution
+    MOV  databomb,<bombptr  ; bomb every square
+    JMP  trap      ; commit suicide when bombing
+            ; wraps around and hits self
+    END  start
+  end
+
+jmp 4
+mov 2, -1
+jmp -1
+dat 9
+spl -2
+spl 4
+add #-16, -3
+mov -4, @-4
+jmp -4
+spl 2
+jmp -1
+mov 0 1
+end
+
+
+
+;redcode
+;name worm optima 2
+;author Campbell Fraser
+;strategy Simple linear 'dat' attack with low profile.
+; http://para.inria.fr/~doligez/corewar/rc/wormoptima2.txt
+SHIFT  equ 6000
+
+  mov ONE,ONE+SHIFT
+  mov TWO,TWO+SHIFT
+  mov B,B+SHIFT
+  mov P,P+SHIFT
+  jmp ONE+SHIFT
+ONE     mov B, <P
+TWO     jmp -1,<P
+      dat #1
+      dat #2
+B:    dat #-9
+      dat #3
+      dat #4
+      dat #5
+      dat #6
+P:    dat #-31
+  dat #7
+  dat #8
+        dat #9
+        dat #10
+        dat #11
+        dat #12
+        dat #13
+        dat #14
+        dat #15
+        dat #16
+        dat #17
+        dat #18
+        dat #19
+        dat #20
+        dat #21
+        dat #22
+        dat #23
+        dat #24
+        dat #25
+        dat #26
+        dat #27
+        dat #28
+        dat #29
+        dat #30
+        dat #31
+        dat #32
+        dat #33
+        dat #34
+        dat #35
+        dat #36
+        dat #37
+        dat #38
+        dat #39
+        dat #40
+        dat #41
+        dat #42
+        dat #43
+        dat #44
+        dat #45
+        dat #46
+        dat #47
+        dat #48
+        dat #49
+        dat #50
+        dat #51
+        dat #52
+        dat #53
+        dat #54
+        dat #55
+        dat #56
+        dat #57
+        dat #58
+        dat #59
+        dat #60
+        dat #61
+        dat #62
+        dat #63
+        dat #64
+        dat #65
+        dat #66
+        dat #67
+        dat #68
+        dat #69
+        dat #70
+        dat #71
+        dat #72
+        dat #73
+        dat #74
+        dat #75
+        dat #76
+        dat #77
+        dat #78
+        dat #79
+        dat #80
+        dat #81
+        dat #82
+        dat #83
+        dat #84
+        dat #85
+        dat #86
+        dat #87
+        dat #88
+        dat #89
+        dat #90
+        dat #91
+        end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;redcode quiet
+;name RedRain
+;author Wayne Sheppard
+add #3039,1
+jmz -1,-1
+mov 2,@-1
+jmp -3
+
+end
+
+
+
+
+
+
+
+
+; http://para.inria.fr/~doligez/corewar/rc/Powerbomb[1].txt
+entryway  JMP  @0
+counter    DAT  20
+databomb  DAT  0
+scan    ADD  #108,outptr    ; assumes corsize multiple of 4
+start    JMZ  scan,@outptr    ; scan till enemy found
+    ADD  #10,outptr
+NOOP    JMP  1      ; noops are placed to avoid
+            ; sighting self
+    MOV  #1,entryway    ; place jump into trap 10
+    SUB  outptr,entryway    ; spots ahead of enemy
+    MOV  entryway,@outptr  ; position
+    JMP  1
+    MOV  #20,counter    ; create path of 20 NOOPs
+noopbomb  MOV  NOOP,<outptr    ; which lead to jump into trap
+    DJN  noopbomb,counter
+    JMP  1
+    ADD  #10,outptr    ; restart scan where left off
+    JMP  scan
+bombptr    DAT  entryway    ; pointer for trapped enemies
+outptr    DAT  0
+trap    SPL  0      ; occupy all lines of execution
+    MOV  databomb,<bombptr  ; bomb every square
+    JMP  trap      ; commit suicide when bombing
+            ; wraps around and hits self
+    END  start
+  end
+
+
+
+
+
+
+
+
+
+;      PHAGE.S
+;      NORIO SUZUKI
+;http://para.inria.fr/~doligez/corewar/rc/PHAGE.txt
+START  MOV     <7,     <11
+       DJN     -1,     11
+       MOV     #7,     261
+       MOV     #259,   264
+       MOV     #14,    264
+       SPL     251
+       JMP     2
+       DAT     7
+       SPL     @5
+       ADD     #8,     4
+       JMP     -2
+       DAT     259
+       DAT     14
+       DAT     2
+       END
+
+
+
+
+;      JUMPER.S
+;      PAOLO   MONTRASIO
+; http://para.inria.fr/~doligez/corewar/rc/JUMPER.txt
+               JMP     INIT
+FROM           DAT     0
+               SPL     DOUBLEIMP
+INIT           MOV     #11,    FROM
+LOOP           MOV     @FROM,  <TO
+               DJN     LOOP,   FROM
+               SPL     @TO
+               ADD     #500,   TO
+               JMZ     INIT,   FROM
+TO             DAT     800
+DOUBLEIMP      MOV     0,      2
+               MOV     0,      2
+               END
+
+
+
+;  IMP TRAP has required some modifications
+;  Jon Newman 7/18/89
+; http://para.inria.fr/~doligez/corewar/rc/IMPTRAP.txt
+    spl 3,0
+    mov 4,-1
+    jmp -1,0
+    spl -2,0
+    jmp 2,0
+    dat 0,5
+    djn 0,-1
+    mov #2000,-3
+    spl 2,0
+    jmp -3,0
+    mov 0,1
+
+    end
+
+
+; Big-raidar
+; For notes about how this works, see Dewdney's first article,
+;   or the "raidar" program.
+; http://para.inria.fr/~doligez/corewar/rc/Big-raidar.txt
+
+targ1:  dat #0
+targ2:  dat #0
+dst:  dat #0
+start:  mov #201, dst
+  mov #-121, targ1
+  mov #346, targ2
+uploop:  mov #42, <targ1
+  mov #42, <targ2
+  djn uploop, dst
+scan:  mov #-121, targ1
+  mov #346, targ2
+  mov #201, dst
+scango:  cmp <targ1, #42
+  jmp panic
+  cmp <targ2, #42
+  jmp panic2
+  djn scango, dst
+  jmp scan
+panic:  mov #25, dst
+  mov #-963, targ1
+pan:  mov @dst, <targ1
+  djn pan, dst
+  jmp @targ1
+panic2:  mov #25, dst
+  mov #1013, targ1
+pan2:  mov @dst, <targ1
+  djn pan, dst
+  jmp @targ1
+
+end start
+
+
+
+
+
+
+;redcode
+;name Achilles
+;Author Jonathan Wolf
+; http://para.inria.fr/~doligez/corewar/rc/Achilles.txt
+
+target: dat #0,#0
+        dat #0,#0
+bomb:   dat #0,#0
+        dat #0,#0
+        dat #0,#0
+        ; clone yourself continuously...
+start:  spl 0,0
+        ; dec target, copy the bomb to target (-1 first)
+        mov @bomb, <target ;at bomb -> if bomb hit still
+                           ;bombs with a dat not a spl
+        ; again, -2 now
+        mov @bomb, <target
+        ; again, -3 now
+        mov @bomb, <target
+        ; repeat
+        jmp -3
+        mov 1,-1  ;if the above is stunned repair it
+        jmp -3
+        end start
+
+
+
+;###########
+; http://para.inria.fr/~doligez/corewar/rc/Binarybomber.txt
+; name Binary bomber
+loop:   mov    bomb,    @offsets
+l2:     add    @i1,     @loop
+        djn    loop,    @i2
+; now change the parameters
+        add    #1,    loop
+        add    #1,    i1
+        add    #1,    i2
+        jmp    loop
+;
+i1:     dat    addvals
+i2:     dat    counts
+;the table of add values
+addvals:
+        dat        #0
+        dat        #4096
+        dat        #2048
+        dat        #1024
+        dat        #512
+        dat        #256
+        dat        #128
+        dat        #64
+        dat        #32
+        dat        #16
+        dat        #8
+        dat        #4
+        dat        #2
+;the table of counts
+counts:
+        dat        #1
+        dat        #2
+        dat        #4
+        dat        #8
+        dat        #16
+        dat        #32-1
+        dat        #64-2
+        dat        #128-4
+        dat        #256-8
+        dat        #512-15
+        dat        #1024-30
+        dat        #2048-60
+        dat        #4096-120
+
+;the table of offsets
+offsets:
+        dat        #bomb+4096
+        dat        #bomb+2048
+        dat        #bomb+1024
+        dat        #bomb+512
+        dat        #bomb+256
+        dat        #bomb+128
+        dat        #bomb+64
+        dat        #bomb+32
+        dat        #bomb+16
+        dat        #bomb+8
+        dat        #bomb+4
+        dat        #bomb+2
+        dat        #bomb+1
+;
+bomb:    dat    #0
+end
+
+
+;###########
+; the imp
+MOV 0 1
+end
+
+
+;###########
+; imp factory
+mov 4 @5  ; copy mov 0 1 to incremental dat.b
+spl @4    ; spawn new imp there
+add #33 3 ; increment spawn location
+jmp -3    ; loop
+mov 0 1   ; any warrior landing here becomes an imp
+dat 0 #16 ; this is a data address signifying the next imp spawn
+end
+
+
+;###########
+; CHANG1 (via http://www-cs-students.stanford.edu/~blynn/play/redcode.html)
+jmp 4
+mov 2, -1
+jmp -1
+dat 9
+spl -2
+spl 4
+add #-16, -3
+mov -4, @-4
+jmp -4
+spl 2
+jmp -1
+mov 0 1
+end
+
+
+</textarea>
+<textarea id=warriorB>
+jmp 2
+dat 0
+mov #12, -1
+mov @-2, <5
+djn -1, -3
+spl @3
+add #653, 2
+jmz -5, -6
+dat 833
+
+
+end
+
+;dwarf
+;ADD #4 3
+;MOV 2, @2
+;JMP -2
+;DAT #0, #0
+
+; MICE (http://www-cs-students.stanford.edu/~blynn/play/redcode.html)
+jmp 2
+dat 0
+mov #12, -1
+mov @-2, <5
+djn -1, -3
+spl @3
+add #653, 2
+jmz -5, -6
+dat 833
+</textarea>
+`;
+
+    const WARRIORS = 2;
+    const OUT_WIDTH = 100;
+    const CORESIZE = 8000;
+    const MAXCYCLES = CORESIZE * 10;
+    const MAXPROCESSES = CORESIZE;
+    const MAXLENGTH = 100;
+    const MINDISTANCE = 100;
+    const VERSION = 10;
+
+    const OPCODE = 0;
+    const A_MOD = 1;
+    const A_VAL = 2;
+    const B_MOD = 3;
+    const B_VAL = 4;
+
+    function norm(n) {
+      if (typeof n !== 'number') must_be_num_here
+      while (n < 0) n += CORESIZE;
+      return n % CORESIZE;
+    }
+
+    function init() {
+      let turn = 0;
+      let stepsLeft = MAXCYCLES;
+      let warriorCounterA = 0;
+      let warriorCounterB = 0;
+
+      function val(offset, p, snum) {
+        if (arguments.length !== 3) {
+          console.log(arguments)
+          missing_warrior;
+        }
+        if (typeof offset !== 'number') console.log([...arguments]), oh_no;
+        if (typeof p !== 'string') console.log([...arguments]), p_string;
+        if (typeof snum !== 'number') console.log([...arguments]), s_num;
+
+        let t;
+        try {
+          /*
+          An octothorpe (#) is used to introduce
+          an immediate operand. The value of the
+          operand is  not an  address but rather
+          the   data   to   be   used   by   the
+          instruction; the data is "immediately"
+          available.
+          */
+          if (p === '#') {
+            return t = snum;
+          }
+          /*
+          The commercial  at sign (@) is used to
+          introduce  an  indirect  operand.  The
+          value  of  the  operand  is used as an
+          offset,   as   it   is   with   direct
+          addressing.
+          The   B  operand  of  the
+          resulting memory location is then used
+          as an  offset from the memory location
+          from   which   it   was  fetched.
+          The
+          resulting   memory   location  is  the
+          source and/or  destination of the data
+          to be used by the instruction, of else
+          is  the   destination   for  branching
+          instructions.
+          */
+          if (p === '@') {
+            console.log('- target is', offset, '+', snum, '=', offset + snum, ', which contains', cell(offset + snum));
+            let B = cell(offset + snum)[B_VAL];
+            // console.log('- that B is', B);
+            // console.log('- so indirect address:', {offset, v, addr, B}, '-->', offset + addr + (B === undefined ? 0 : parseInt(B[0] === '@' || B[0] === '#' ? B.slice(1) : B, 10)));
+            return t = offset + snum + B;
+          }
+
+          /*
+          The less  than  sign  (<)  is  used to
+          introduce   a  pre-decrement  indirect
+          operand. The  value of  the operand is
+          used  as  an  offset,  as  it  is with
+          direct addressing.  The  B  operand of
+          the   resulting   memory  location  is
+          fetched,    decremented,    and   then
+          restored. It is then used as an offset
+          from the memory location from which it
+          was  fetched.   The  resulting  memory
+          location   is    the   source   and/or
+          destination for the data to be used by
+          the   instruction,   or  else  is  the
+          destination        for       branching
+          instructions.
+          */
+          if (p === '<') {
+            // console.log('- target is', offset, '+', snum,'=',offset+snum, ', which contains', cell(offset+snum), ', decrementing it and then fetching it');
+            let B = --cell(offset + snum)[B_VAL];
+            console.log('decremented addr', offset + snum + '.B to', B);
+            // console.log('- that B is', B);
+            // console.log('- so indirect address:', {offset, v, addr, B}, '-->', offset + addr + (B === undefined ? 0 : parseInt(B[0] === '@' || B[0] === '#' ? B.slice(1) : B, 10)));
+            return t = B;
+          }
+
+
+          /*
+          The  default  mode  is  direct.  If no
+          modifier  symbol  precedes an operand,
+          the value of the operand is used as an
+          offset from  the memory locations from
+          which  it  was  fetched.
+          The resulting
+          memory  location  is the source and/or
+          destination of  the data to be used by
+          the   instruction,   or  else  is  the
+          destination        for       branching
+          instructions.
+          */
+          // console.log('offset', offset,' + s', parseInt(s, 10), '=', offset + parseInt(s, 10));
+          return t = offset + snum;
+        } catch (e) {
+          t = 1;
+          throw e;
+        } finally {
+          // console.log('val(', [offset, s], ') =', t);
+          if (isNaN(t)) {
+            console.log(offset, p, snum, t, snum);
+            never_nan
+          }
+        }
+      }
+
+      function cell(n) {
+        return core[norm(n)];
+      }
+
+      function compile(input, offset) {
+        console.log('Compiling at core offset', offset);
+        let labels = {CORESIZE, MAXCYCLES, MAXPROCESSES, WARRIORS, MAXLENGTH, MINDISTANCE, VERSION};
+        let start = 0;
+
+        let vars = {}; // vars are extrapolated (can be any string). referring to vars replaces the varname with the whole string at compile time, no questions asked.
+
+        let lines = [];
+        let ended = false;
+
+        let lastLabel;
+        let counter = -1; // offset=0
+        let prevlabel;
+        // tokenizer (also processes EQU's and END+start, and applies DAT.B fix)
+        input.toUpperCase().replace(
+          /^[ \t]*(?:(?<label>[\w\d_]+):?(?:[ \t]+|$))?(?:(?:\b(?<op>_|DJN|JMP|JMZ|MOV|SPL|SUB|DAT|ADD|CMP|EQU|END)\b)(?:[ \t]+(?<moda>[#@<]?)[ \t]*(?<vala>[\w\d_-]+(?:[+\-*\/<>!&|<>=]+[\w\d_-]+)*))?(?:[ \t,]+(?<modb>[#@<]?)[ \t]*(?<valb>[\w\d_-]+(?:[+\-*\/<>!&|<>=]+[\w\d_-]+)*)?)?)?[ \t]*(?:;.*)?$/gm,
+          // TODO: can do ...rest and slice (or not even) but if I'm going to drop optional groups that's trickier
+          (m, label=prevlabel, op, moda, vala, modb, valb) =>
+            ended || m &&
+            (
+              // When END is found the rest is discarded. Set `ended` to true to shortcut remaining calls.
+              // (It ends up in the label group, which is acceptable for me)
+              (op == 'END' || label == 'END') ? (ended = true, start = vala || 0, console.log('END; start set to', start)) :
+              // if a label has its own line move it to the next call with an op. if this was an empty line then
+              // propagate the previous label (or undefined, making it a noop, which is fine too)
+              !op ? prevlabel = label :
+              // log EQU vars in this step, do not add them to the list, they are pseudo instructions (compile time only)
+              op == 'EQU' ? (vars[label] = (moda || '') + vala) :
+              (
+                // IF WE REACH HERE WE WILL COMPILE A CORE CELL at counter
+                ++counter,
+                // if a label is present set its index now. Also clear the prev label so we dont override it next time
+                typeof label === 'string'? labels[label] = prevlabel = counter : 1,
+                lines.push(
+                  // DAT has an exception where if it has one operand, it is to be interpreted as the B operand
+                  // create list of lines
+                  op != 'DAT' || valb ? [op, moda, vala, modb, valb] : [op, '', '0', moda, vala]
+                ),
+                console.log(
+                  ('' + counter).padStart(3, ' ') + ': ' +
+                  (typeof label === 'string' ? label + ':': '').padEnd(10,' ') + ' ' +
+                  lines[lines.length-1][OPCODE] + '   ' +
+                  (' ' + (lines[lines.length-1][1]||'') + (lines[lines.length-1][2]||'0')).padEnd(5, ' ') +
+                  (' ' + (lines[lines.length-1][3]||'') + (lines[lines.length-1][4]||'0'))
+                )
+              )
+            )
+        );
+
+        lines
+        .map(([op, moda = '', vala = '0', modb = '', valb = '0'], i) => {
+          let x = core[norm(i + offset)] = [
+            op,
+            moda,
+            eval(
+              vala
+              .replace(/\b[\w\d_]+\b/g, s => s in vars ? vars[s] : s)
+              .replace(/\b[\w\d_]+\b/g, s => s in labels ? labels[s] - i : s)
+            ),
+            modb,
+            eval(
+              valb
+              .replace(/\b[\w\d_]+\b/g, s => s in vars ? vars[s] : s)
+              .replace(/\b[\w\d_]+\b/g, s => s in labels ? labels[s] - i : s)
+            ),
+          ];
+        });
+        console.log('After compilation:');
+        console.log(
+          core.slice(offset, offset + lines.length).map((x,i) =>
+            ('' + i).padStart(3, ' ') + ': ' +
+            x[OPCODE] + '  ' +
+            (' ' + (x[1]||'') + (x[2]||'0')).padEnd(5, ' ') +
+            (' ' + (x[3]||'') + (x[4]||'0'))
+          ).join('\n')
+        );
+
+        // start can be a label or numeric offset. dont make it harder then it needs to be.
+        start = labels[start] || +start;
+
+        console.log('Start position offset resolved to', start);
+        console.log('Compiled ' + lines.length + ' ops');
+        console.log('Labels:', JSON.stringify(labels));
+
+        return start;
+      }
+
+      let core = new Array(CORESIZE).fill(0).map(_ => ['_', '#', 0, '#', 0]);
+      console.log('Compiling warrior A');
+      let offsetA = 0;
+      let startA = compile(warriorA.value, 0);
+      const warriorsA = [{i: 0, a: offsetA + startA}];
+      let offsetB, startB = 0;
+      let warriorsB;
+      if (WARRIORS > 1) {
+        console.log('Compiling warrior B');
+        offsetB = MINDISTANCE+~~(Math.random()*(CORESIZE-MINDISTANCE-MINDISTANCE));
+        startB = compile(warriorB.value, offsetB);
+        warriorsB = [{i: 0, a: offsetB + startB}];
+      }
+
+      function coreloop(s) {
+        !s&&console.log('');
+        if (!warriorsA.length || (warriorsB && !warriorsB.length)) {
+          console.log('At least one warrior has no more children, game over', warriorsA, warriorsB);
+          if (!warriorsA.length) debugA.value = 'A is dead, B wins';
+          else debugB.value = 'B is dead, A wins';
+          x
+        } else if (--stepsLeft <= 0) {
+          console.log('Hit turn limit');
+          debugA.value = debugB.value = 'Turn limit; draw';
+          x
+        }
+
+        let turnWarriors = (turn % WARRIORS) === 0 ? warriorsA : warriorsB;
+        let currentWarrior = turnWarriors.shift();
+        let op = cell(currentWarrior.a);
+        !s&&console.log('turn:', turn, ', (', (turnWarriors === warriorsA ? 'A' : 'B'), '), warrior id:', currentWarrior.i, ', pos:', norm(currentWarrior.a), ', value:', op);
+        let opCode = op[OPCODE];
+        let valA = val(currentWarrior.a, op[A_MOD], op[A_VAL]);
+        let valB = val(currentWarrior.a, op[B_MOD], op[B_VAL]);
+        !s&&console.log(opCode + '(', valA, ',', valB, ')');
+
+        if (!s) (turn % WARRIORS === 0 ? debugA : debugB).value = '[' + turn + '] ' +
+          (turn % WARRIORS === 0 ? 'A:' : 'B:') + ' id: ' + ('' + currentWarrior.i).padStart(4, ' ') + ' at ' + ('' + norm(currentWarrior.a)).padStart(5, ' ') +
+          ', op: ' + [
+            op[0].padEnd(5, ' '),
+            ((op[1] || ' ') + ('' + op[2])).padEnd(7, ' '),
+            ((op[3] || ' ') + ('' + op[4])).padEnd(7, ' ')
+          ].join(' ') +
+          '; (' + ((turn % WARRIORS === 0 ? warriorsA : warriorsB).length + 1) + 'x)' +
+          '[' + [currentWarrior, ...(turn % WARRIORS === 0 ? warriorsA : warriorsB).slice(0,20).sort((a,b)=>a.i<b.i?-1:a.i>b.i?1:0)].map(({i, a}) => '<' + i + ':' + a + '>') + ']';
+
+        switch (opCode) {
+          case '_':
+          case 'DAT': {
+            console.log('DAT; warrior dies');
+            // do have to store A to B?
+            // we just dont put currentWarrior back...
+            currentWarrior = null; // signal death
+            break;
+          }
+          case 'ADD': {
+            // ADD  A   B  :
+            // If  the  A  operand  is
+            // immediate it  is added  to the B-field
+            // of the B operand.
+            // If the A operand is
+            // not immediate both the  A-field and B-
+            // field  of  the  A  operand  are  added
+            // respectively  to  the  A-field  and B-
+            // field of the B operand.
+            if (op[A_MOD] === '#') {
+              console.log('copy immediate, add', valA, 'to the B at', valB, '(', cell(valB)[B_VAL], ') and prefix', cell(valB)[B_MOD]);
+              cell(valB)[B_VAL] += valA;
+              console.log('-->', cell(valB));
+            } else {
+              console.log('add cell.AB at', valA, 'to', valB);
+
+              let cellA = cell(valA);
+              let cellB = cell(valB);
+
+              cellB[A_VAL] = cellA[A_VAL] + cellB[A_VAL];
+              cellB[B_VAL] = cellA[B_VAL] + cellB[B_VAL];
+              console.log('-->', cellB);
+            }
+            break;
+          }
+          case 'SUB': {
+            if (op[A_MOD] === '#') {
+              console.log('copy immediate, sub', valA, 'from the B at', valB, '(', cell(valB)[B_VAL], ') and prefix', cell(valB)[B_MOD]);
+              cell(valB)[B_VAL] -= valA;
+              console.log('-->', cell(valB));
+            } else {
+              console.log('sub cell.AB at', valA, 'from', valB);
+
+              let cellA = cell(valA);
+              let cellB = cell(valB);
+
+              cellB[A_VAL] = cellA[A_VAL] - cellB[A_VAL];
+              cellB[B_VAL] = cellA[B_VAL] - cellB[B_VAL];
+              console.log('-->', cellB);
+            }
+            break;
+          }
+          case 'CMP': {
+            // CMP  A   B  :  If  the  A  operand  is
+            // immediate it  is  compared  to  the B-
+            // field of the memory location specified
+            // by  the  B   operand,   otherwise  the
+            // contents of the entire memory location
+            // specified by the A operand is compared
+            // to the contents of the memory location
+            // specified by  the  B  operand.  If the
+            // compared  values  are  equal, the next
+            // instruction  is  skipped  (the program
+            // counter is incremented).
+            if (op[A_MOD] === '#') {
+              console.log('Skip immediate, skip next if', valA, 'is equal to the B at', valB, '(', cell(valB)[B_VAL], 'and prefix', cell(valB)[B_MOD], ')');
+              if (valA === cell(valB)[B_VAL]) {
+                console.log('skipping one instruction');
+                ++currentWarrior.a;
+              } else {
+                console.log('not skipping');
+              }
+            } else {
+              console.log('JEQ, skip next if cell', valA, '(', cell(valA), ')', 'is equal to cell', valB, '(', cell(valB), ')');
+              if (cell(valA).join(',') === cell(valB).join(',')) {
+                console.log('skipping one instruction');
+                ++currentWarrior.a;
+              } else {
+                console.log('not skipping');
+              }
+            }
+            break;
+          }
+          case 'DJN': {
+            // DJN  A  B  :
+            // If  the B operand is not
+            // immediate, the B-field  of  the memory
+            // location specified by the B operand is
+            // fetched,    decremented,    and   then
+            // restored,
+            // otherwise the B-field of the
+            // current instruction  is  used.
+            // If the value is  not zero, the address
+            // of the memory location specified by the
+            // A operand is  placed at the back of the
+            // process  queue   associated  with   the
+            // executing program.
+            let test;
+            if (op[2] === '#') {
+              console.log('B = #', valB, '. Decrement it to', valB - 1, 'and store it back');
+              test = --op[B_VAL];
+            } else {
+              console.log('B = ', valB, '. Now fetch the B of that addr, which is', cell(valB)[B_VAL], '. We decrement this to', (cell(valB)[B_VAL] - 1), 'before storing that back');
+              test = --cell(valB)[B_VAL];
+            }
+            if (test !== 0) {
+              console.log('operand is non-zero so jumping to', valA);
+              currentWarrior.a = valA - 1; // note that this value gets incremented below
+            } else {
+              console.log('operand is zero so not jumping');
+            }
+            break;
+          }
+          case 'JMP': {
+            // JMP A  B :  The address  of the memory
+            // location specified by the A operand is
+            // placed  at  the  back  of  the process
+            // queue  associated  with  the executing
+            // program.
+            // The   B  operand  does  not
+            // necessarily    participate    in   the
+            // execution of the instruction.
+            // This appears to be a split but that would be counter intuitive to what a jump ought to do and
+            // http://corewar.co.uk/madtutor.txt confirms this. It should _replace_ the PC for the current warrior, not add
+            // another warrior to the warrior stack.
+            console.log('jump to', valA);
+            currentWarrior.a = valA - 1; // note that this value gets incremented below
+            break;
+          }
+          case 'JMZ': {
+            // JMZ  A  B  :  If  the B-field of the B
+            // operand is zero  then  the  address of
+            // the memory location specified by the A
+            // operand is placed at  the back  of the
+            // process  queue   associated  with  the
+            // executing program.
+            if (cell(valB)[B_VAL] === 0) currentWarrior.a = valA - 1; // note that this value gets incremented below
+            break;
+          }
+          case 'JMN': {
+            // JMN A B :  If  the  B-field  of  the B
+            // operand is  not zero  then the address
+            // of the  memory  location  specifiec by
+            // the A operand is placed at the back of
+            // the process queue associated  with the
+            // executing program.
+            if (cell(valB)[B_VAL] !== 0) currentWarrior.a = valA - 1; // note that this value gets incremented below
+            break;
+          }
+          case 'SLT': {
+            // SLT  A  B  :  If  the A operand is not
+            // immediate, the B-field  ot  the memory
+            // location specified by the A operand is
+            // compared  to  the  B-field  of  the  B
+            // operand,   otherwise   the  A  operand
+            // itself is  used in  the comparison. If
+            // the A  value is less than the B value,
+            // the next instruction  is  skipped (the
+            // program counter is incremented).
+            if (op[A_MOD] === '#') {
+              console.log('Skip immediate, skip next if', valA, 'is less than the B at', valB, '(', cell(valB)[B_VAL], 'and prefix', cell(valB)[B_MOD], ')');
+              if (valA < cell(valB)[B_VAL]) {
+                console.log('skipping one instruction');
+                ++currentWarrior.a;
+              } else {
+                console.log('not skipping');
+              }
+            } else {
+              console.log('Skip next if A.B', cell(valA)[B_VAL], 'is equal to B.B', cell(valB)[B_VAL]);
+              if (cell(valA)[B_VAL] < cell(valB)[B_VAL]) {
+                console.log('skipping one instruction');
+                ++currentWarrior.a;
+              } else {
+                console.log('not skipping');
+              }
+            }
+            break;
+          }
+          case 'MOV': {
+            // MOV  A  B  :
+            // If  the   A  operand  is
+            // immediate it  is placed in the B-field
+            // of the  memory  location  specified by
+            // the B  operand,
+            // otherwise the contents
+            // of   the    entire   memory   location
+            // specified by the A operand is moved to
+            // the memory location specified by the B
+            // operand.
+            if (op[A_MOD] === '#') {
+              console.log('copy immediate');
+              cell(valB)[B_VAL] = valA;
+              console.log('core afterwards:', cell(valB));
+            } else {
+              // console.log('copy cell (',cell(valA),') at', [valA], 'to', [valB]);
+              console.log('Overriding core[', valB, '] (=', cell(valB), ') with core[', valA, '] (=', cell(valA), ')');
+              core[norm(valB)] = cell(valA).slice(0);
+              if (cell(valA)[OPCODE] === '_') cell(valA)[OPCODE] = 'DAT';
+              console.log('core afterwards:', cell(valB));
+            }
+            break;
+          }
+          case 'SPL': {
+            // SPL A B : After a process has caused an
+            // SPL  instruction  to  be  fetched,  the
+            // program  counter   is  incremented  and
+            // placed  at  the  back  of  its  process
+            // queue.  The  address  ot   the  spawned
+            // process is then placed  at the  back of
+            // the same queue, providing  the queue is
+            // not  full.  The  B   operand  does  not
+            // necessarily participate in execution of
+            // this instruction.
+            console.log('Spawning new warrior for', turn % WARRIORS ? 'A' : 'B', 'starting at addr', valA);
+            // the new warrior is added after the old warrior. so put them both in the stack now
+            ++currentWarrior.a;
+            let newWarrior = {i: turnWarriors === warriorsA ? ++warriorCounterA : ++warriorCounterB, a: valA};
+            turnWarriors.push(currentWarrior, newWarrior); // after the first split, currentWarrior goes next, then the new warrior
+            currentWarrior = null;
+            break;
+          }
+          default:
+            fail
+        }
+
+        if (currentWarrior) { // null if warrior dead or already post-processed
+          !s&&console.log('Bumping warrior pc:', currentWarrior);
+          ++currentWarrior.a;
+          turnWarriors.push(currentWarrior);
+        } else {
+          !s&&console.log('Either current warrior is dead or already post-processed');
+        }
+
+        if (!s) C.innerHTML = core.map((s, i) => {
+          let c = s[0][0];
+          return (
+            {
+              1: '<span style="background-color:red">' + c + '</span>',
+              2: '<span style="background-color:blue">' + c + '</span>',
+              3: '<span style="background-color:purple">' + c + '</span>',
+              '': c,
+            }[(warriorsA.some(w => i == norm(w.a)) ? 1 : '') + (warriorsB && warriorsB.some(w => i == norm(w.a)) ? 2 : '')] +
+            (i && (i % OUT_WIDTH) === 0 ? '\n' : '')
+          );
+        }).join('');
+
+        ++turn;
+      }
+
+      function r() {
+        try {
+          coreloop();
+        } catch (e) {
+          K.onclick();
+          throw e;
+        }
+      }
+
+      let t;
+      S.onclick = _ => t = r();
+      R.onclick = _ => t = setInterval(r, 1000);
+      F.onclick = _ => t = setInterval(r, 100);
+      T.onclick = _ => t = setInterval(r, 1);
+      K.onclick = _ => t = clearInterval(t)||init();
+      D.onclick = _ => {for (let i=0;i<999;++i)coreloop(1);coreloop()}
+
+      location.hash = btoa(
+        core.slice(offsetA, offsetA+MAXLENGTH).map(([a,b,c,d,e]) => a+` ${b+c} `+d+e).join('\n').replace(/\n_ #0 #0/g, '')
+        + '\nEND ' + startA
+        +'%'+
+        core.slice(offsetB, offsetB+MAXLENGTH).map(([a,b,c,d,e]) => a+` ${b+c} `+d+e).join('\n').replace(/\n_ #0 #0/g, '')
+        + '\nEND ' + startB
+      );
+    }
+    I.onclick = init;
+
+    let hash = location.hash.slice(1);
+    // Correct me if I'm wrong but without assignment, parens, dots, and square brackets you can't do much in js... (-> eval)
+    if (hash) {
+      warriorA.value = atob(hash).replace(/[^A-Z0-9@#<% \n-]/g, '').split('%')[0];
+      warriorB.value = atob(hash).replace(/[^A-Z0-9@#<% \n-]/g, '').split('%')[1];
+    }
+
+    init();
+  }
+
+
+  // END
+</script>
+</body>
+</html>
